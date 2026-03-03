@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Wedding Invitation Design Tokens ──────────────────────────────────────── */
+
+@layer base {
+  :root {
+    --radius: 0.25rem;
+
+    /* Deep emerald green palette */
+    --background: 0.21 0.06 160;
+    --foreground: 0.96 0.04 85;
+
+    --card: 0.18 0.05 160;
+    --card-foreground: 0.96 0.04 85;
+
+    --popover: 0.18 0.05 160;
+    --popover-foreground: 0.96 0.04 85;
+
+    /* Matte gold as primary */
+    --primary: 0.73 0.12 80;
+    --primary-foreground: 0.18 0.05 160;
+
+    --secondary: 0.25 0.05 160;
+    --secondary-foreground: 0.96 0.04 85;
+
+    --muted: 0.25 0.04 160;
+    --muted-foreground: 0.62 0.08 80;
+
+    /* Bright gold accent */
+    --accent: 0.79 0.14 80;
+    --accent-foreground: 0.18 0.05 160;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    /* Ivory separator */
+    --border: 0.92 0.02 85;
+    --input: 0.92 0.02 85;
+    --ring: 0.73 0.12 80;
+
+    --chart-1: 0.646 0.222 41.116;
+    --chart-2: 0.6 0.118 184.704;
+    --chart-3: 0.398 0.07 227.392;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+
+    --sidebar: 0.18 0.05 160;
+    --sidebar-foreground: 0.96 0.04 85;
+    --sidebar-primary: 0.73 0.12 80;
+    --sidebar-primary-foreground: 0.18 0.05 160;
+    --sidebar-accent: 0.25 0.05 160;
+    --sidebar-accent-foreground: 0.96 0.04 85;
+    --sidebar-border: 0.92 0.02 85;
+    --sidebar-ring: 0.73 0.12 80;
+
+    /* Typography variables */
+    --font-display: 'Playfair Display', Georgia, 'Times New Roman', serif;
+    --font-body: 'Crimson Pro', Georgia, serif;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    background-color: #0a3329;
+    color: #c9a84c;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+}
+
+/* ─── Font Face Declarations ─────────────────────────────────────────────────── */
+
+/* Playfair Display — display serif (bundled) */
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/assets/fonts/PlayfairDisplay[wght].woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-weight: 400 900;
+  font-display: swap;
+  src: url('/assets/fonts/PlayfairDisplay-Italic[wght].woff2') format('woff2');
+}
+
+/* Crimson Pro — elegant body serif (bundled) */
+@font-face {
+  font-family: 'Crimson Pro';
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/assets/fonts/CrimsonPro[wght].woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Crimson Pro';
+  font-style: italic;
+  font-weight: 200 900;
+  font-display: swap;
+  src: url('/assets/fonts/CrimsonPro-Italic[wght].woff2') format('woff2');
+}
+
+/* ─── Wedding Animations ─────────────────────────────────────────────────────── */
+
+@keyframes shimmerPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glowPulse {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(0) translateX(0) scale(1);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.5;
+  }
+  80% {
+    opacity: 0.3;
+  }
+  100% {
+    transform: translateY(-100vh) translateX(calc(sin(1rad) * 30px)) scale(0.3);
+    opacity: 0;
+  }
+}
+
+/* ─── Accordion animations (shadcn) ─────────────────────────────────────────── */
+
+@keyframes accordion-down {
+  from { height: 0; }
+  to { height: var(--radix-accordion-content-height); }
+}
+
+@keyframes accordion-up {
+  from { height: var(--radix-accordion-content-height); }
+  to { height: 0; }
+}
+
+.animate-accordion-down {
+  animation: accordion-down 0.2s ease-out;
+}
+
+.animate-accordion-up {
+  animation: accordion-up 0.2s ease-out;
+}
